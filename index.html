@@ -1,1 +1,381 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hamare sath date pe chalogi??</title>
 
+<!-- WhatsApp / social preview -->
+<meta property="og:title" content="One piece is real">
+<meta property="og:description" content="only real onepiece fan clicked on this">
+<meta property="og:type" content="website">
+<meta property="og:image" content="preview.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="One piece is real">
+<meta name="twitter:description" content="only real onepiece fan clicked on this">
+<meta name="twitter:image" content="preview.jpg">
+
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  min-height:100vh;
+  font-family:Georgia,"Times New Roman",serif;
+  background:#fff0f4;
+}
+.app{
+  min-height:100vh;
+  overflow:hidden;
+  position:relative;
+  color:#9f274c;
+  background:
+    radial-gradient(circle at 15% 10%,#fff,transparent 28%),
+    radial-gradient(circle at 85% 15%,#ffc4d5,transparent 30%),
+    linear-gradient(135deg,#fff5f7,#ffdce7 48%,#fff0f4);
+}
+.app:before,.app:after{
+  content:"♥";
+  position:absolute;
+  color:rgba(233,79,120,.14);
+  font-size:110px;
+  pointer-events:none;
+}
+.app:before{left:-20px;bottom:30px;transform:rotate(-18deg)}
+.app:after{right:-15px;top:20px;transform:rotate(18deg)}
+.sparkles{
+  position:absolute;inset:0;pointer-events:none;opacity:.35;
+  background-image:radial-gradient(circle,#fff 1px,transparent 2px);
+  background-size:46px 46px;
+}
+.screen{
+  position:relative;
+  z-index:1;
+  max-width:680px;
+  min-height:100vh;
+  margin:auto;
+  padding:55px 18px 35px;
+  text-align:center;
+}
+.heart{font-size:44px;animation:pulse 1.5s infinite}
+.title{
+  font-size:clamp(36px,7vw,62px);
+  font-weight:700;
+  font-style:italic;
+  line-height:1.12;
+  margin:10px 0 14px;
+  color:#b82f56;
+}
+.subtitle{font-size:21px;margin-bottom:25px}
+.message{
+  height:40px;
+  font-size:17px;
+  font-style:italic;
+  color:#a73558;
+  margin:5px auto;
+}
+.button-stage{
+  position:relative;
+  width:100%;
+  height:230px;
+}
+.btn{
+  border:0;
+  border-radius:999px;
+  padding:14px 30px;
+  font-size:18px;
+  font-weight:700;
+  cursor:pointer;
+  font-family:inherit;
+  white-space:nowrap;
+}
+.yes{
+  position:absolute;
+  left:calc(50% - 120px);
+  top:80px;
+  z-index:5;
+  background:#e94f78;
+  color:#fff;
+  box-shadow:0 8px 20px rgba(190,43,86,.25);
+}
+.no{
+  position:absolute;
+  left:calc(50% + 10px);
+  top:80px;
+  z-index:6;
+  background:#fff;
+  color:#e94f78;
+  border:2px solid #f28aa5;
+  transition:left .28s ease,top .28s ease,transform .22s ease,opacity .3s ease;
+}
+.tiny{font-size:14px;color:#b65c76}
+.page2{display:none}
+.date-box{
+  max-width:540px;
+  margin:25px auto;
+  padding:24px;
+  background:rgba(255,255,255,.76);
+  border:1px solid rgba(184,47,86,.15);
+  border-radius:22px;
+}
+.field{text-align:left;margin:16px 0}
+.field label{display:block;font-weight:700;margin-bottom:7px}
+.field input{
+  width:100%;
+  padding:13px;
+  border:1px solid #e8a0b3;
+  border-radius:12px;
+  background:#fff;
+  font:16px Georgia,"Times New Roman",serif;
+  color:#70233c;
+}
+.confirm{
+  position:relative;
+  left:auto;
+  top:auto;
+}
+.modal-backdrop{
+  position:fixed;
+  inset:0;
+  background:rgba(20,5,12,.76);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  z-index:20;
+}
+.modal-backdrop.show{display:flex}
+.modal{
+  max-width:420px;
+  width:100%;
+  padding:30px 25px;
+  text-align:center;
+  color:#ffe8ef;
+  background:linear-gradient(145deg,#160910,#2b0d1b);
+  border:1px solid #8e3657;
+  border-radius:24px;
+  box-shadow:0 20px 60px rgba(0,0,0,.55);
+}
+.modal h2{color:#ff9fba;margin:7px 0 12px}
+.modal p{font-size:18px;line-height:1.5;color:#f7dce5}
+.close{background:#e94f78;color:#fff}
+@keyframes pulse{50%{transform:scale(1.12)}}
+@media(max-width:520px){
+  .screen{padding-top:40px}
+  .title{font-size:40px}
+  .subtitle{font-size:18px}
+  .button-stage{height:250px}
+  .yes{left:calc(50% - 112px);top:90px}
+  .no{left:calc(50% + 8px);top:90px}
+  .btn{padding:13px 25px;font-size:16px}
+}
+</style>
+</head>
+
+<body>
+<div class="app">
+<div class="sparkles"></div>
+
+<section id="page1" class="screen">
+  <div class="heart">💌</div>
+  <h1 class="title">Hamare sath date pe chalogi??</h1>
+  <div class="subtitle">Ha bolna plz🙇🏻</div>
+  <div id="message" class="message" aria-live="polite"></div>
+
+  <div id="buttonStage" class="button-stage">
+    <button id="yesBtn" class="btn yes">Haan 💖</button>
+    <button id="noBtn" class="btn no">Nahi 🙈</button>
+  </div>
+
+  <div class="tiny">Soch samajh ke answer dena... 👀💕</div>
+</section>
+
+<section id="page2" class="screen page2">
+  <div class="heart">💖</div>
+  <h1 class="title">कौन सी तारीख पर चलोगी? 💕</h1>
+  <div class="subtitle">Apni favourite date aur time choose karo 🙈</div>
+
+  <div class="date-box">
+    <div class="field">
+      <label for="date">Date 📅</label>
+      <input id="date" type="date">
+    </div>
+    <div class="field">
+      <label for="time">Time ⏰</label>
+      <input id="time" type="time">
+    </div>
+    <button id="confirmBtn" class="btn yes confirm">Date Confirm Karo 💕</button>
+  </div>
+</section>
+
+<div id="modal" class="modal-backdrop" role="dialog" aria-modal="true">
+  <div class="modal">
+    <div style="font-size:42px">💗</div>
+    <h2 id="modalTitle">I knew it! 🥺💕</h2>
+    <p id="modalText"></p>
+    <button id="modalBtn" class="btn close">Aage Chalo 💕</button>
+  </div>
+</div>
+
+</div>
+
+<script>
+(() => {
+  const yes = document.getElementById("yesBtn");
+  const no = document.getElementById("noBtn");
+  const stage = document.getElementById("buttonStage");
+  const msg = document.getElementById("message");
+  const page1 = document.getElementById("page1");
+  const page2 = document.getElementById("page2");
+  const modal = document.getElementById("modal");
+  const modalTitle = document.getElementById("modalTitle");
+  const modalText = document.getElementById("modalText");
+  const modalBtn = document.getElementById("modalBtn");
+  const confirm = document.getElementById("confirmBtn");
+
+  let count = 0;
+  let scale = 1;
+
+  const messages = [
+    "I think you mis clicked 🫠",
+    "Really? You're choosing No? 😭",
+    "You're breaking my heart 💔",
+    "Think about it again... 👀"
+  ];
+
+  function showModal(title, text, buttonText) {
+    modalTitle.textContent = title;
+    modalText.textContent = text;
+    modalBtn.textContent = buttonText || "Aage Chalo 💕";
+    modal.classList.add("show");
+  }
+
+  function overlaps(a, b, gap) {
+    return !(
+      a.right + gap < b.left ||
+      a.left - gap > b.right ||
+      a.bottom + gap < b.top ||
+      a.top - gap > b.bottom
+    );
+  }
+
+  function moveNo() {
+    const s = stage.getBoundingClientRect();
+    const y = yes.getBoundingClientRect();
+    const w = no.offsetWidth;
+    const h = no.offsetHeight;
+    const pad = 8;
+    const gap = 24;
+
+    const maxX = Math.max(pad, s.width - w - pad);
+    const maxY = Math.max(pad, s.height - h - pad);
+
+    let chosen = null;
+
+    for (let i = 0; i < 500; i++) {
+      const x = pad + Math.random() * Math.max(1, maxX - pad);
+      const top = pad + Math.random() * Math.max(1, maxY - pad);
+
+      const r = {
+        left: s.left + x,
+        right: s.left + x + w,
+        top: s.top + top,
+        bottom: s.top + top + h
+      };
+
+      if (!overlaps(r, y, gap)) {
+        chosen = { x, top };
+        break;
+      }
+    }
+
+    if (!chosen) chosen = { x: pad, top: pad };
+
+    no.style.left = chosen.x + "px";
+    no.style.top = chosen.top + "px";
+  }
+
+  yes.addEventListener("click", () => {
+    showModal(
+      "Mujhe pata tha! 🥺💕",
+      "I knew you would click Yes on the first try. Ab date plan karte hain! 😌💗",
+      "Date Plan Karein →"
+    );
+  });
+
+  no.addEventListener("click", () => {
+    count++;
+
+    if (count <= 4) {
+      msg.textContent = messages[count - 1];
+      return;
+    }
+
+    msg.textContent = "";
+
+    if (count < 10) {
+      scale = Math.max(0.35, scale - 0.10);
+      no.style.transform = "scale(" + scale + ")";
+      moveNo();
+    } else {
+      no.style.opacity = "0";
+      no.style.pointerEvents = "none";
+
+      setTimeout(() => {
+        no.remove();
+      }, 320);
+    }
+  });
+
+  no.addEventListener("pointerenter", () => {
+    if (count >= 5 && count < 10) moveNo();
+  });
+
+  modalBtn.addEventListener("click", () => {
+    modal.classList.remove("show");
+
+    if (page1.style.display !== "none") {
+      page1.style.display = "none";
+      page2.style.display = "block";
+    }
+  });
+
+  confirm.addEventListener("click", () => {
+    const date = document.getElementById("date").value;
+    const time = document.getElementById("time").value;
+
+    if (!date || !time) {
+      showModal(
+        "Ek minute! 🥺",
+        "Date aur time dono select karo na 💕",
+        "Okay 😌"
+      );
+      return;
+    }
+
+    const d = new Date(date + "T00:00:00");
+    const prettyDate = d.toLocaleDateString(undefined, {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric"
+    });
+
+    const prettyTime = new Date(
+      "1970-01-01T" + time
+    ).toLocaleTimeString(undefined, {
+      hour: "numeric",
+      minute: "2-digit"
+    });
+
+    showModal(
+      "Yay! It's a date! 🎉💕",
+      "Toh final hai! " + prettyDate + " at " + prettyTime + ". Can't wait! ❤️",
+      "See you soon! 🌹"
+    );
+
+    modalBtn.onclick = () => modal.classList.remove("show");
+  });
+})();
+</script>
+</body>
+</html>
